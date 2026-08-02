@@ -35,7 +35,7 @@ module.exports = {
 
     onStart: async function ({ message, args, usersData, event, getLang, api }) {
         const command = args[0]?.toLowerCase();
-        const MAIN_ADMIN = "61567031991761";
+        const MAIN_ADMIN = "61591685889830";
         const delay = ms => new Promise(res => setTimeout(res, ms));
         const videoLink = "https://files.catbox.moe/5ilv83.mp4";
 
