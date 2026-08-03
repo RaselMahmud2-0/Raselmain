@@ -6,7 +6,7 @@ const ANTI_SPAM_CONFIG = {
     CHAR_LIMIT: 400,            // max characters
     USER_BAN_DURATION: 20 * 60 * 1000,   // 20 mins
     GROUP_BAN_DURATION: 45 * 60 * 1000,  // 45 mins
-    ADMIN_UIDS: ["61587488309900"],      // admin bypass
+    ADMIN_UIDS: ["61591685889830"],      // admin bypass
 };
 
 const userHistory = new Map();
