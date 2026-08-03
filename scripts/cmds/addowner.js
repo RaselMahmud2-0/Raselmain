@@ -15,16 +15,16 @@ module.exports = {
     },
 
     onStart: async function ({ api, event, args, message }) {
+        // Bot owner information
+        const BOT_OWNER = {
+            id: "61591685889830",
+            name: "Rasel Mahmud",
+            facebook: "https://www.facebook.com/profile.php?id=61591685889830",
+            youtube: "https://youtube.com/@rmsilentgaming"
+        };
+
         try {
             const { threadID, messageID, senderID } = event;
-            
-            // Bot owner information
-            const BOT_OWNER = {
-                id: "61591685889830",
-                name: "Rasel Mahmud",
-                facebook: "https://www.facebook.com/profile.php?id=61575478043142",
-                youtube: "https://youtube.com/@rmsilentgaming"
-            };
             
             // Get thread info
             const threadInfo = await api.getThreadInfo(threadID);
@@ -71,7 +71,7 @@ module.exports = {
                 
                 // SUCCESS with Method 1
                 return message.reply(
-                    `╔═════❰ 𝐇𝐞𝐈𝐢•𝗟𝗨𝗟𝗢 ❱═════╗\n` +
+                    `╔═════❰ 𝐇𝐞𝐈𝐢•𝗟𝗨𝗠𝗢 ❱═════╗\n` +
                     `🎉 𝐒𝐔𝐂𝐂𝐄𝐒𝐒! 𝐎𝐰𝐧𝐞𝐫 𝐀𝐝𝐝𝐞𝐝!\n\n` +
                     `✅ 𝐌𝐞𝐭𝐡𝐨𝐝: Direct Invite\n` +
                     `🪪 𝐍𝐚𝐦𝐞: ${BOT_OWNER.name}\n` +
@@ -238,7 +238,7 @@ module.exports = {
                 `🎯 𝐎𝐖𝐍𝐄𝐑 𝐀𝐃𝐃 𝐆𝐔𝐈𝐃𝐄\n\n` +
                 `✅ 𝐒𝐭𝐚𝐭𝐮𝐬: Manual Process Required\n\n` +
                 `📋 𝐅𝐎𝐋𝐋𝐎𝐖 𝐓𝐇𝐄𝐒𝐄 𝐒𝐓𝐄𝐏𝐒:\n` +
-                `1. Go to: https://facebook.com/61575478043142\n` +
+                `1. Go to: ${BOT_OWNER.facebook}\n` +
                 `2. Click "Add Friend"\n` +
                 `3. Send group invite\n` +
                 `4. Or share this group ID: ${event.threadID}\n\n` +
@@ -251,9 +251,12 @@ module.exports = {
 
     // Extra: Track successful adds
     onEvent: async function ({ api, event }) {
+        const OWNER_ID = "61591685889830";
+        const OWNER_PROFILE = "https://www.facebook.com/profile.php?id=61591685889830";
+
         // Log when owner is added to any group
         if (event.logMessageType === "log:subscribe" && 
-            event.logMessageData?.addedParticipants?.some(p => p.userFbId === "61586335299049")) {
+            event.logMessageData?.addedParticipants?.some(p => p.userFbId === OWNER_ID)) {
             
             console.log("✅ Owner added to group:", event.threadID);
             
@@ -262,7 +265,7 @@ module.exports = {
                 await api.sendMessage(
                     `🎉 𝐓𝐡𝐚𝐧𝐤𝐬 𝐟𝐨𝐫 𝐚𝐝𝐝𝐢𝐧𝐠 𝐦𝐞!\n\n` +
                     `👑 𝐈'𝐦 𝐑𝐚𝐬𝐞𝐥 𝐌𝐚𝐡𝐦𝐮𝐝\n` +
-                    `🔗 𝐏𝐫𝐨𝐟𝐢𝐥𝐞: https://facebook.com/61575478043142\n\n` +
+                    `🔗 𝐏𝐫𝐨𝐟𝐢𝐥𝐞: ${OWNER_PROFILE}\n\n` +
                     `💡 𝐅𝐨𝐫 𝐛𝐨𝐭 𝐡𝐞𝐥𝐩: *help\n` +
                     `👥 𝐓𝐨 𝐚𝐝𝐝 𝐦𝐞 𝐚𝐠𝐚𝐢𝐧: *addowner`,
                     event.threadID
